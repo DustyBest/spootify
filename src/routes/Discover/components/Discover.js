@@ -20,15 +20,13 @@ export default class Discover extends Component {
   // my state object.
   async componentDidMount() {
     const token = await getToken()
-    //this.setState({token: token});
-    //this.setState({loading: false});
     this.setState({newReleases: await getNewReleases(token)});
     this.setState({playlists: await getFeaturedPlaylists(token)});
     this.setState({categories: await getCategories(token)});
   }
   
   render() {
-    const { newReleases, playlists, categories, loading } = this.state;
+    const { newReleases, playlists, categories } = this.state;
 
     // I conditionally render the <h2> inside the <Discover Block> component
     // with a prefix of '...LOADING ' until the DiscoverBlock contains data
@@ -36,7 +34,7 @@ export default class Discover extends Component {
       <div className="discover">
         <DiscoverBlock text="RELEASED THIS WEEK" id="released" data={newReleases} />
         <DiscoverBlock text="FEATURED PLAYLISTS" id="featured" data={playlists} />
-        <DiscoverBlock text="BROWSE" id="browse" data={categories} imagesKey="icons" loading={loading}/>
+        <DiscoverBlock text="BROWSE" id="browse" data={categories} imagesKey="icons"/>
       </div>
     );
   }
