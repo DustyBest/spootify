@@ -5,6 +5,11 @@ const api = {
   clientSecret: '57f2aab95f1b46268830370bdf53d661'
 }
 
+// Below are my API calls. For query parameters I only attatched country (Japan) 
+// and item limits (15). Since there were only 2, I hard coded them to the url string 
+// rather than abstracting them out. I used Japan to make the results a bit interesting,
+// and only returned 15 results to make the call ever so slightly faster.
+
 // FETCH TOKEN
 export const getToken = async () => {
   const newToken = await fetch('https://accounts.spotify.com/api/token', {
@@ -22,7 +27,7 @@ export const getToken = async () => {
 
 // GET NEW RELEASES
 export const getNewReleases = async (token) => {
-  const newReleases = await fetch('https://api.spotify.com/v1/browse/new-releases?country=US&limit=15', {
+  const newReleases = await fetch('https://api.spotify.com/v1/browse/new-releases?country=JP&limit=15', {
       method: 'GET',
       headers: {
           'Authorization' : `Bearer ${token}`
@@ -35,7 +40,7 @@ export const getNewReleases = async (token) => {
 
 // GET FEATURED PLAYLISTS
 export const getFeaturedPlaylists = async (token) => { 
-  const featuredPlaylists = await fetch('https://api.spotify.com/v1/browse/featured-playlists?country=US&limit=15', {
+  const featuredPlaylists = await fetch('https://api.spotify.com/v1/browse/featured-playlists?country=JP&limit=15', {
       method: 'GET',
       headers: {
           'Authorization' : `Bearer ${token}`
@@ -48,7 +53,7 @@ export const getFeaturedPlaylists = async (token) => {
 
 // GET CATEGORIES TO BROWSE
 export const getCategories = async (token) => {
-  const browseCategories = await fetch('https://api.spotify.com/v1/browse/categories?country=US&limit=15', {
+  const browseCategories = await fetch('https://api.spotify.com/v1/browse/categories?country=JP&limit=15', {
       method: 'GET',
       headers: {
           'Authorization' : `Bearer ${token}`
