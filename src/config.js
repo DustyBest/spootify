@@ -10,7 +10,7 @@ const api = {
 // rather than abstracting them out. I used Japan to make the results a bit interesting,
 // and only returned 15 results to make the call ever so slightly faster.
 
-// FETCH TOKEN
+// GET TOKEN
 export const getToken = async () => {
   const newToken = await fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
