@@ -13,11 +13,13 @@ function scrollContainer(id, { isNegative } = {}) {
   };
 }
 
+// I conditionally render the <h2> with a prefix of '...LOADING ' 
+// until the DiscoverBlock contains data
 export default function DiscoverBlock({ text, id, data, imagesKey = 'images' }) {
   return (
     <div className="discover-block">
       <div className="discover-block__header">
-        <h2>{text}</h2>
+        <h2>{data.length > 0 ? text : `...LOADING ${text}`}</h2>
         <span />
         {
           data.length ? (
