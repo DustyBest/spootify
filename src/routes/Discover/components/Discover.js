@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import DiscoverBlock from './DiscoverBlock/components/DiscoverBlock';
 import '../styles/_discover.scss';
-// I placed my api calls in the provided config.js file with the included api object. 👍
-import { getToken, getNewReleases, getFeaturedPlaylists, getCategories } from '../../../config';
+import { getToken, getNewReleases, getFeaturedPlaylists, getCategories } from '../../../services/helpers';
 
 export default class Discover extends Component {
   constructor() {
@@ -15,10 +14,10 @@ export default class Discover extends Component {
     };
   }
 
-  
   // When the component mounts, I await my call to get a token.
   // Once I've got it, I use it in my other calls to push data into 
   // my state object.
+
   async componentDidMount() {
     try{
       const token = await getToken()
@@ -37,8 +36,6 @@ export default class Discover extends Component {
   render() {
     const { newReleases, playlists, categories } = this.state;
 
-    // I conditionally render the <h2> inside the <Discover Block> component
-    // with a prefix of '...LOADING ' until the DiscoverBlock contains data
     return (
       <div className="discover">
         <DiscoverBlock text="RELEASED THIS WEEK" id="released" data={newReleases} />
